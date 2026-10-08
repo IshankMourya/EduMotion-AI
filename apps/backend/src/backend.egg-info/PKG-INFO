@@ -1,0 +1,76 @@
+Metadata-Version: 2.4
+Name: backend
+Version: 0.1.0
+Summary: EduMotion AI Backend API
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi>=0.109.0
+Requires-Dist: uvicorn[standard]>=0.27.0
+Requires-Dist: supabase>=2.8.0
+Requires-Dist: python-jose[cryptography]>=3.3.0
+Requires-Dist: python-multipart>=0.0.9
+Requires-Dist: pydantic>=2.6.0
+Requires-Dist: pydantic-settings>=2.2.0
+Requires-Dist: httpx>=0.26.0
+Requires-Dist: python-dotenv>=1.0.0
+Requires-Dist: asyncpg>=0.29.0
+Requires-Dist: sqlalchemy[asyncio]>=2.0.0
+Requires-Dist: alembic>=1.13.0
+Requires-Dist: greenlet>=3.0
+Requires-Dist: pgvector>=0.2.0
+Requires-Dist: docling>=2.15.0
+Requires-Dist: pymupdf>=1.23.0
+Requires-Dist: ollama>=0.3.0
+Requires-Dist: aiohttp>=3.14.4
+
+# EduMotion AI Backend
+
+## Development
+
+```bash
+# Install dependencies
+cd apps/backend
+uv sync  # or pip install -e ".[dev]"
+
+# Run development server
+uv run uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
+
+# Or with python directly
+python -m uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+## Environment Variables
+
+Copy `.env.example` to `.env` and fill in your values.
+
+Required:
+- `SUPABASE_URL`
+- `SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `DATABASE_URL`
+
+## API Documentation
+
+- Swagger UI: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc
+
+## Project Structure
+
+```
+src/
+├── api/           # API routes
+│   ├── auth.py    # Authentication
+│   ├── projects.py # Project CRUD
+│   ├── upload.py  # File upload
+│   ├── processing.py # PDF processing & video rendering
+│   └── chat.py    # Chat/RAG
+├── core/          # Core configuration
+│   ├── config.py  # Settings
+│   └── security.py # JWT auth
+├── db/            # Database
+│   └── database.py
+├── models/        # SQLAlchemy models
+├── schemas/       # Pydantic schemas
+├── services/      # Business logic (to be added)
+└── main.py        # App entry point
+```

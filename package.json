@@ -1,0 +1,23 @@
+{
+  "name": "edumotion-ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local-first AI educational video generator",
+  "scripts": {
+    "dev": "pnpm --filter=frontend dev & pnpm --filter=backend dev & pnpm --filter=video-renderer dev",
+    "build": "pnpm --filter=frontend build && pnpm --filter=backend build && pnpm --filter=video-renderer build",
+    "lint": "pnpm --filter=frontend lint && pnpm --filter=backend lint && pnpm --filter=video-renderer lint",
+    "typecheck": "pnpm --filter=frontend typecheck && pnpm --filter=backend typecheck && pnpm --filter=video-renderer typecheck",
+    "db:push": "pnpm --filter=supabase db:push",
+    "db:studio": "pnpm --filter=supabase db:studio"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.6.0"
+}
